@@ -1,13 +1,33 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 
 class AdminController extends Controller
 {
+   public function delivered($id){
+  
+      $order=order::find($id);
+
+      $order->delivery_status="delivered";
+      $order->payment_status="Paid";
+      $order->save();
+
+      return redirect()->back();
+   }
+
+
+
+   public function order(){
+
+      $order=order::all();
+    return view('admin.order', compact('order'));
+   }
+
+
     public function view_category() {
         $data = category::all();
         return view('admin.category', compact('data'));
