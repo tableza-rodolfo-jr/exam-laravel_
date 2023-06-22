@@ -18,9 +18,9 @@
                       <li><a href="testimonial.html">Testimonial</a></li>
                    </ul>
                 </li> --}}
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                    <a class="nav-link" href="product.html">Products</a>
-                </li>
+                </li> --}}
 
                 @if (Route::has('login'))
                 @auth

@@ -68,4 +68,4 @@
       <!-- custom js -->
       <script src="home/js/custom.js"></script>
    </body>
-</html>home/
+</html>
