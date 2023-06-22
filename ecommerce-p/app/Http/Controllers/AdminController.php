@@ -43,6 +43,13 @@ class AdminController extends Controller
        return redirect()->back()->with('message', 'Succesfully deleted');
      }
 
+     public function show_product(){
+
+
+        $product = product::all();
+         return view('admin.show_product', compact('product'));
+     }
+
      public function add_category(Request $request) {
          
         $data = new category;

@@ -9,31 +9,35 @@
     <title>Admin Dashboard</title>
 
     @include('admin.css')
-
-    <style type="text/css">
-        .div_center{
-            text-align: center;
-            padding: 40px;
-        }
-        .h2_font {
-            font-size: 40px;
-            padding-bottom: 40px;
-            color: black;
-        }
-        .input_color, .input_submit{
-            color: black !important;
-        }
-        td {
-            color: black;
-        }
-        .center {
-            margin: auto;
-            width: 50%;
-            text-align: center;
-            margin-top: 30px;
-            border: 3px solid green;
-        }
-    </style>
+   
+<style type="text/css">
+   .center{
+      margin: auto;
+      width: 50%;
+      border: 2px solid black;
+      text-align: center;
+      margin-top: 40px;
+   }
+  td {
+    color: black
+   }
+   th{
+    background-color: maroon;
+   }
+   .font_size{
+    color: black;
+    text-align: center;
+    font-size: 40px;
+    padding-top: 20px;
+   }
+  .img_size{
+    width: 150px;
+    height: 150px;
+  }
+  .th_design{
+    padding: 30px;
+  }
+</style>
 
   </head>
   <body>
@@ -63,51 +67,39 @@
         <!-- partial:partials/_navbar.html -->
         @include('admin.header')
         <!-- partial -->
-         <div class="main-panel">
+        <div class="main-panel">
             <div class="content-wrapper">
 
-          @if(session()->has('message'))
 
-           <div class="alert alert-success">
+                  <h2 class="font_size">All Products</h2>
 
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-               {{ session()->get('message') }}
-           </div>
 
-          @endif
-
-              <div class="div_center">
-                   <h2 class="h2_font">Add Category</h2>
-
-              <form action="{{ url('/add_category') }}" method="POST">
-
-                @csrf
-                    <input class="input_color" type="text" name="category" id="" placeholder="Write category name">
-                    <input  type="submit" value="Add Category" class="btn btn-primary input_submit" name="submit">
-              </form>
-                 
-
-                 <table class="center">
-
-                     <tr>
-                        <td>Catagory Name</td>
-                        <td>Action</td>
-                    </tr> 
-                  
-                    @foreach ($data as $data)
-                        
+                <table class="center">
                     <tr>
-                        <td>{{ $data->category_name }}</td>
+                        <th class="th_design">Product Title</th>
+                        <th class="th_design">Description</th>
+                        <th class="th_design">Quantity</th>
+                        <th class="th_design">Price</th>
+                        <th class="th_design">Image</th>
+                    </tr>
+                  
+               @foreach ($product as $product)
+                   
+           
+                    <tr>
+                        <td>{{ $product->title }}</td>
+                        <td>{{ $product->description }}</td>
+                        <td>{{ $product->quantity }}</td>
+                        <td>{{ $product->price }}</td>
                         <td>
-                            <a onclick="return confirm('Are you sure to delete this')" class="btn btn-danger" href="{{ url('delete_category', $data->id) }}">Delete</a>
+                            <img class="img_size" src="/product/{{ $product->image }}" alt="" srcset="">
                         </td>
                     </tr>
-                   @endforeach
-                 </table>
+               @endforeach
+                </table>
 
-              </div>
             </div>
-         </div>
+        </div>
         <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->
