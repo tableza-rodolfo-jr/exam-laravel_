@@ -18,9 +18,10 @@
                       <li><a href="testimonial.html">Testimonial</a></li>
                    </ul>
                 </li> --}}
-                {{-- <li class="nav-item">
-                   <a class="nav-link" href="product.html">Products</a>
-                </li> --}}
+                <li class="nav-item" style="margin-right: 10px">
+                   <a class="btn btn-primary" href="{{ url('/show_cart') }}">Cart  <span>0</span></a>
+                  
+                </li>
 
                 @if (Route::has('login'))
                 @auth
