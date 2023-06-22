@@ -26,7 +26,7 @@
        
        .center{
         margin: auto;
-        width: 70%;
+        width: 45%;
         text-align: center;
         padding: 30px;
        }
@@ -42,7 +42,7 @@
     .total_deg{
          font-size: 20px;
          padding: 40px;
-         margin-right: 450px;
+         margin-left: 10px;
     }
     </style>
    </head>
@@ -55,7 +55,15 @@
          <!-- slider section -->
          {{-- @include('home.slider') --}}
          <!-- end slider section -->
-    
+         @if(session()->has('message'))
+
+         <div class="alert alert-success">
+
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+             {{ session()->get('message') }}
+         </div>
+
+        @endif
 
       <div class="center">
          <table>
@@ -79,8 +87,7 @@
                 <td> <img style="width:150px; height:150px" src="/product/{{ $cart->image }}" alt="">  </td>
                 <td>
                     <a onclick="return confirm('Are you sure to delete this')" class="btn btn-danger" href="{{ url('/remove_cart', $cart->id) }}">Remove Product</a>
-                    <a class="btn btn-primary" href="">Remove Product</a>
-                    <a class="btn btn-primary" href="">Remove Product</a>
+                  
                 </td>
               </tr>
 
@@ -93,6 +100,12 @@
             <h1 class="total_deg">Total Price: ₱{{ $totalprice }}</h1>
 
 
+           </div>
+
+           <div>
+                 <h1 style="font-size: 40px">Proceed to Order</h1>
+                 <a onclick="return confirm('Do you want to proceed?')" href="{{ url('/cash_order') }}" class="btn btn-danger">Cash On delivery</a>
+               
            </div>
        
 
